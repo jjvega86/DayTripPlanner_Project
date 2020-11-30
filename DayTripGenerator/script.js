@@ -22,16 +22,24 @@ function RunDayTripGenerator(){
 }
 
 function regenerateFeatures(trip){
-    var input = prompt("Would you like to re-generate any of these features? Yes or No").toLowerCase();
-    switch(input){
-        case "yes":
-            break;
-        case "no":
-            alert("Your final trip is: \n" + trip);
-            break;
-        default:
-            regenerateFeatures();
-    }
+    let doneSelecting = false;
+
+    while(doneSelecting === false){
+        var input = prompt("Would you like to re-generate any of these features? Yes or No").toLowerCase();
+
+        switch(input){
+            case "yes":
+                break;
+            case "no":
+                doneSelecting = true;
+                break;
+            default:
+                regenerateFeatures();
+        }
+
+    } 
+    
+    alert("Your final trip is: \n" + trip);
 }
 
 function selectFeatureToRegenerate(trip){
@@ -49,6 +57,8 @@ function selectFeatureToRegenerate(trip){
         default:
             selectFeatureToRegenerate(trip);
     }
+
+    return selectedFeature;
 }
 
 function randomNumberGenerator(maxValue){
