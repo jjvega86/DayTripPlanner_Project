@@ -12,8 +12,14 @@ let restaurants = ["Enoteca Italian", "Gus's Fried Chicken", "Tim's Chinese Food
 let transporationModes = ["car", "bike", "train", "airplane"];
 let entertainmentForms = ["live music", "zoo visit", "wine tasting", "brewery tour", "live sports"];
 
-function mainMenu(){
-    let userInput = prompt("Welcome to Day Trip Generator!");
+function RunDayTripGenerator(){
+    // main "facade" function for application logic
+
+    alert("Welcome to Day Trip Generator!\nClick OK to see your trip!");
+    alert(buildDayTrip);
+
+    
+    
 }
 
 function randomNumberGenerator(maxValue){
@@ -26,4 +32,16 @@ function generateRandomFeature(tripFeatures){
     var randomIndex = randomNumberGenerator(tripFeatures.Length);
 
     return tripFeatures[randomIndex];
+}
+
+function buildDayTrip(){
+    let selectedDestination = generateRandomFeature(destinations);
+    let selectedRestaurant = generateRandomFeature(restaurants);
+    let selectedTransportation = generateRandomFeature(transporationModes);
+    let selectedEntertainment = generateRandomFeature(entertainmentForms);
+
+    let entireTrip = selectedDestination + "" + selectedRestaurant + " " + selectedTransportation + " " + selectedEntertainment;
+
+    return entireTrip;
+
 }
