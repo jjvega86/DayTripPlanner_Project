@@ -22,26 +22,27 @@ function RunDayTripGenerator(){
 }
 
 function regenerateFeatures(trip){
-    let doneSelecting = false;
+
     let modifiedTrip;
+    let isComplete = false;
 
-    while(doneSelecting === false){
+    while(isComplete === false){
         var input = prompt("Would you like to re-generate any of these features? Yes or No").toLowerCase();
-
         switch(input){
             case "yes":
                 modifiedTrip = selectFeatureToRegenerate(trip);
+                trip = modifiedTrip;
+                alert(displayTrip(trip));
                 break;
             case "no":
-                doneSelecting = true;
-                modifiedTrip = trip;
+                isComplete = true;
                 break;
             default:
-                regenerateFeatures();
+                regenerateFeatures(trip);
         }
-    } 
-
-    alert("Your final trip is: \n" + displayTrip(modifiedTrip));
+    }
+   
+    alert("Your final trip is: \n" + displayTrip(trip));
 }
 
 function selectFeatureToRegenerate(trip){
