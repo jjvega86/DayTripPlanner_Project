@@ -16,10 +16,21 @@ function RunDayTripGenerator(){
     // main "facade" function for application logic
     var trip = buildDayTrip();
     alert("Welcome to Day Trip Generator!\nClick OK to see your trip!");
-    alert(trip);
+    alert(trip);   
+    
+}
 
-    
-    
+function regenerateFeatures(){
+    var input = prompt("Would you like to re-generate any of these features? Yes or No").toLowerCase();
+    switch(input){
+        case "yes":
+            break;
+        case "no":
+            break;
+        default:
+            regenerateFeatures();
+
+    }
 }
 
 function randomNumberGenerator(maxValue){
