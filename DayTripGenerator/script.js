@@ -23,50 +23,63 @@ function RunDayTripGenerator(){
 
 function regenerateFeatures(trip){
     let doneSelecting = false;
+    let modifiedTrip;
 
     while(doneSelecting === false){
         var input = prompt("Would you like to re-generate any of these features? Yes or No").toLowerCase();
 
         switch(input){
             case "yes":
+                modifiedTrip = selectFeatureToRegenerate(trip);
                 break;
             case "no":
                 doneSelecting = true;
+                modifiedTrip = trip;
                 break;
             default:
                 regenerateFeatures();
         }
-
     } 
 
-    alert("Your final trip is: \n" + trip);
+    alert("Your final trip is: \n" + displayTrip(modifiedTrip));
 }
 
 function selectFeatureToRegenerate(trip){
     var input = prompt("Pick which feature you'd like to change! <Destination, Restaurant, Transportation, Entertainment").toLowerCase();
     let selectedFeature;
+    let modifiedTrip;
     switch(input){
         case "destination":
             selectedFeature = generateRandomFeature(destinations);
-            modifyTrip(0, selectedFeature, trip);
+            modifiedTrip = modifyTrip(0, selectedFeature, trip);
+            break;
+
         case "restaurant":
             selectedFeature = generateRandomFeature(restaurants);
+            modifiedTrip = modifyTrip(1, selectedFeature, trip);
+            break;
+
         case "transportation":
             selectedFeature = generateRandomFeature(transporationModes);
+            modifiedTrip = modifyTrip(2, selectedFeature, trip);
+            break;
+
         case "entertainment":
             selectedFeature = generateRandomFeature(entertainmentForms);
+            modifiedTrip = modifyTrip(3, selectedFeature, trip);
+            break;
+
         default:
             selectFeatureToRegenerate(trip);
     }
 
-    return selectedFeature;
+    return modifiedTrip;
 }
 
 function modifyTrip(featureType, selectedFeature, trip){
     trip[featureType] = selectedFeature;
     return trip;
 }
-
 
 
 function randomNumberGenerator(maxValue){
@@ -103,6 +116,8 @@ function displayTrip(trip){
     entireTrip += "Restaurant: " + trip[1] + "\n";
     entireTrip += "Transportation: " + trip[2] + "\n";
     entireTrip += "Entertainment: " + trip[3] + "\n";
+
+    return entireTrip;
 
 }
 
