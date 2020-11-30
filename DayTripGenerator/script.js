@@ -15,3 +15,9 @@ let entertainment = ["live music", "zoo visit", "wine tasting", "brewery tour", 
 function mainMenu(){
     let userInput = prompt("Welcome to Day Trip Generator!");
 }
+
+function randomNumberGenerator(maxValue){
+    let randomNumber = Math.random() * maxValue;
+
+    return Math.floor(randomNumber);
+}
