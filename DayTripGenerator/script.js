@@ -22,8 +22,8 @@ function randomNumberGenerator(maxValue){
     return Math.floor(randomNumber);
 }
 
-function generateRandomDestination(destinations){
-    var randomIndex = randomNumberGenerator(destinations.Length);
+function generateRandomFeature(tripFeatures){
+    var randomIndex = randomNumberGenerator(tripFeatures.Length);
 
-    return destinations[randomIndex];
+    return tripFeatures[randomIndex];
 }
