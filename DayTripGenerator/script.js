@@ -16,20 +16,38 @@ function RunDayTripGenerator(){
     // main "facade" function for application logic
     var trip = buildDayTrip();
     alert("Welcome to Day Trip Generator!\nClick OK to see your trip!");
-    alert(trip);   
+    alert(trip);  
+    regenerateFeatures(trip); 
     
 }
 
-function regenerateFeatures(){
+function regenerateFeatures(trip){
     var input = prompt("Would you like to re-generate any of these features? Yes or No").toLowerCase();
     switch(input){
         case "yes":
             break;
         case "no":
+            alert("Your final trip is: \n" + trip);
             break;
         default:
             regenerateFeatures();
+    }
+}
 
+function selectFeatureToRegenerate(trip){
+    var input = prompt("Pick which feature you'd like to change! <Destination, Restaurant, Transportation, Entertainment").toLowerCase();
+    let selectedFeature;
+    switch(input){
+        case "destination":
+            selectedFeature = generateRandomFeature(destinations);
+        case "restaurant":
+            selectedFeature = generateRandomFeature(restaurants);
+        case "transportation":
+            selectedFeature = generateRandomFeature(transporationModes);
+        case "entertainment":
+            selectedFeature = generateRandomFeature(entertainmentForms);
+        default:
+            selectFeatureToRegenerate(trip);
     }
 }
 
