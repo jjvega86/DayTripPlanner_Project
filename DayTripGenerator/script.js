@@ -7,10 +7,10 @@
 // Display "Complete" in console to signify end of running script
 
 
-let destination = ["Virginia Beach", "Williamsburg", "Charlottsville", "Washington DC", "Richmond"];
-let restaurant = ["Enoteca Italian", "Gus's Fried Chicken", "Tim's Chinese Food", "The Table", "Stir Crazy"];
-let transporation = ["car", "bike", "train", "airplane"];
-let entertainment = ["live music", "zoo visit", "wine tasting", "brewery tour", "live sports"];
+let destinations = ["Virginia Beach", "Williamsburg", "Charlottsville", "Washington DC", "Richmond"];
+let restaurants = ["Enoteca Italian", "Gus's Fried Chicken", "Tim's Chinese Food", "The Table", "Stir Crazy"];
+let transporationModes = ["car", "bike", "train", "airplane"];
+let entertainmentForms = ["live music", "zoo visit", "wine tasting", "brewery tour", "live sports"];
 
 function mainMenu(){
     let userInput = prompt("Welcome to Day Trip Generator!");
@@ -20,4 +20,10 @@ function randomNumberGenerator(maxValue){
     let randomNumber = Math.random() * maxValue;
 
     return Math.floor(randomNumber);
+}
+
+function generateRandomDestination(destinations){
+    var randomIndex = randomNumberGenerator(destinations.Length);
+
+    return destinations[randomIndex];
 }
