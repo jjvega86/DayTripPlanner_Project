@@ -16,7 +16,7 @@ function RunDayTripGenerator(){
     // main "facade" function for application logic
     var trip = buildDayTrip();
     alert("Welcome to Day Trip Generator!\nClick OK to see your trip!");
-    alert(trip);  
+    alert(displayTrip(trip));  
     regenerateFeatures(trip); 
     
 }
@@ -38,7 +38,7 @@ function regenerateFeatures(trip){
         }
 
     } 
-    
+
     alert("Your final trip is: \n" + trip);
 }
 
@@ -48,6 +48,7 @@ function selectFeatureToRegenerate(trip){
     switch(input){
         case "destination":
             selectedFeature = generateRandomFeature(destinations);
+            modifyTrip(0, selectedFeature, trip);
         case "restaurant":
             selectedFeature = generateRandomFeature(restaurants);
         case "transportation":
@@ -60,6 +61,13 @@ function selectFeatureToRegenerate(trip){
 
     return selectedFeature;
 }
+
+function modifyTrip(featureType, selectedFeature, trip){
+    trip[featureType] = selectedFeature;
+    return trip;
+}
+
+
 
 function randomNumberGenerator(maxValue){
     let randomNumber = Math.random() * maxValue;
@@ -80,12 +88,21 @@ function buildDayTrip(){
     let selectedTransportation = generateRandomFeature(transporationModes);
     let selectedEntertainment = generateRandomFeature(entertainmentForms);
 
-    let entireTrip = "Destination: " + selectedDestination + "\n";
-    entireTrip += "Restaurant: " + selectedRestaurant + "\n";
-    entireTrip += "Transportation: " + selectedTransportation + "\n";
-    entireTrip += "Entertainment: " + selectedEntertainment + "\n";
+    let tripArray = [];
+    tripArray.push(selectedDestination);
+    tripArray.push(selectedRestaurant);
+    tripArray.push(selectedTransportation);
+    tripArray.push(selectedEntertainment);
   
-    return entireTrip;
+    return tripArray;
+
+}
+
+function displayTrip(trip){
+    let entireTrip = "Destination: " + trip[0] + "\n";
+    entireTrip += "Restaurant: " + trip[1] + "\n";
+    entireTrip += "Transportation: " + trip[2] + "\n";
+    entireTrip += "Entertainment: " + trip[3] + "\n";
 
 }
 
